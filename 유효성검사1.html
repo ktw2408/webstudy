@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        function checkfield() {
+
+            if (document.addjoin.id.value == "") { //id값이 없을 경우
+                alert("아이디를 입력하세요");         //메세지 경고창을 띄운 후
+                document.addjoin.id.focus();     // id 텍스트박스에 커서를 위치
+                exit;
+            } else if (document.addjoin.pw.value == "") {
+                alert("비밀번호를 입력하세요");
+                document.addjoin.pw.focus();
+                exit;
+            } else if (document.addjoin.pw2.value == "") {
+                alert("비밀번호확인을 입력하세요");
+                document.addjoin.pw2.focus();
+                exit;
+            } else if (document.addjoin.name.value == "") {
+                alert("이름을 입력하세요");
+                document.addjoin.name.focus();
+                exit;
+            } else if (document.addjoin.nick.value == "") {
+                alert("닉네임을 입력하세요");
+                document.addjoin.nick.focus();
+                exit;
+            } else if (document.addjoin.addr.value == "") {
+                alert("주소를 입력하세요");
+                document.addjoin.addr.focus();
+                exit;
+            } else if (document.addjoin.email.value == "") {
+                alert("이메일을 입력하세요");
+                document.addjoin.email.focus();
+                exit;
+            }
+            if (document.addjoin.pw.value != document.addjoin.pw2.value) {
+                //비밀번호와 비밀번호확인의 값이 다를 경우
+                alert("입력한 2개의 비밀번호가 일치하지 않습니다.");
+                document.addjoin.pw.focus();
+                exit;
+            }
+            var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+            if (exptext.test(document.addjoin.email.value) == false) {
+                //이메일 형식이 알파벳+숫자@알파벳+숫자.알파벳+숫자 형식이 아닐경우
+                alert("이메일형식이 올바르지 않습니다.");
+                document.addjoin.email.focus();
+                exit;
+            }
+            document.addjoin.submit();
+        }
+    </script>
+</head>
+<body>
+    <form action="joinaction" name="join" method="post">
+        <table style="text-align: left" width="400px">
+            <tr>
+                <td>아이디</td>
+                <td>
+                    <input type="text" name="id" id="id" />
+                    <div id="ckid"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td>
+                    <input type="password" name="pw" id="pw" />
+                </td>
+            </tr>
+            <tr>
+                <td>비밀번호확인</td>
+                <td>
+                    <input type="password" name="pw2" id="pw2" />
+                </td>
+            </tr>
+            <tr>
+                <td>이름</td>
+                <td>
+                    <input type="text" name="name" id="name" />
+                </td>
+            </tr>
+            <tr>
+                <td>닉네임</td>
+                <td>
+                    <input type="text" name="nick" id="nick" />
+                </td>
+            </tr>
+            <tr>
+                <td>주소</td>
+                <td>
+                    <input type="text" name="addr" id="addr" />
+                </td>
+            </tr>
+            <tr>
+                <td>이메일</td>
+                <td>
+                    <input type="text" name="email" id="email" />
+                </td>
+            </tr>
+        </table>
+        <br />
+        <table width="400px">
+            <tr>
+                <td style="text-align: center">
+                    <input type="button" value="가입하기" onclick="checkfield()" />&nbsp;&nbsp;&nbsp;
+                    <input type="reset" value="취소" />&nbsp;&nbsp;&nbsp;
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
